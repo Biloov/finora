@@ -226,7 +226,7 @@ router.post('/', authenticateToken, upload.single('attachment'), async (req: Aut
       return res.status(400).json({ error: 'Un compte de destination est requis pour un transfert.' });
     }
 
-    let fileUrl = null;
+    let fileUrl: string | null = null;
     if (req.file) {
       fileUrl = `/uploads/${req.file.filename}`;
     }

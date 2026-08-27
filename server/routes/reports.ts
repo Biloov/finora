@@ -267,7 +267,7 @@ router.get('/projections', authenticateToken, async (req: AuthenticatedRequest, 
     });
 
     // We build 90 daily projection slots
-    const projections = [];
+    const projections: any[] = [];
     let runningBalance = initialCash;
     let runningReceivables = receivables.reduce((sum, r) => sum + r.remainingAmount, 0);
     let runningDebts = debts.reduce((sum, d) => sum + d.remainingAmount, 0);
@@ -385,7 +385,7 @@ router.get('/insights', authenticateToken, async (req: AuthenticatedRequest, res
     const prevExpenseSum = prevMonthExpenses.reduce((sum, t) => sum + t.amount, 0);
 
     // 2. Build insights
-    const insights = [];
+    const insights: any[] = [];
 
     // Trend insight
     if (prevExpenseSum > 0) {
