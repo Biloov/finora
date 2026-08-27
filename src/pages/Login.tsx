@@ -12,6 +12,8 @@ export const Login: React.FC = () => {
   const [isPinMode, setIsPinMode] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showPin, setShowPin] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -73,14 +75,25 @@ export const Login: React.FC = () => {
                 <label className="font-label-caps text-[10px] text-on-surface-variant uppercase tracking-wider">
                   Mot de passe
                 </label>
-                <input 
-                  type="password" 
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="••••••••"
-                  required
-                  className="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 font-body-sm text-body-sm text-primary focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all"
-                />
+                <div className="relative">
+                  <input 
+                    type={showPassword ? 'text' : 'password'} 
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="••••••••"
+                    required
+                    className="w-full bg-surface-container-low border border-outline-variant rounded-lg pl-4 pr-10 py-3 font-body-sm text-body-sm text-primary focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors cursor-pointer flex items-center justify-center"
+                  >
+                    <span className="material-symbols-outlined text-[20px]">
+                      {showPassword ? 'visibility_off' : 'visibility'}
+                    </span>
+                  </button>
+                </div>
               </div>
             </>
           ) : (
@@ -104,15 +117,26 @@ export const Login: React.FC = () => {
                 <label className="font-label-caps text-[10px] text-on-surface-variant uppercase tracking-wider">
                   Code PIN à 4 chiffres
                 </label>
-                <input 
-                  type="password" 
-                  maxLength={4}
-                  value={pin}
-                  onChange={(e) => setPin(e.target.value.replace(/\D/g, ''))}
-                  placeholder="••••"
-                  required
-                  className="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 font-body-sm text-body-sm text-primary focus:border-secondary focus:ring-1 focus:ring-secondary text-center text-xl tracking-widest outline-none transition-all"
-                />
+                <div className="relative">
+                  <input 
+                    type={showPin ? 'text' : 'password'} 
+                    maxLength={4}
+                    value={pin}
+                    onChange={(e) => setPin(e.target.value.replace(/\D/g, ''))}
+                    placeholder="••••"
+                    required
+                    className="w-full bg-surface-container-low border border-outline-variant rounded-lg pl-4 pr-10 py-3 font-body-sm text-body-sm text-primary focus:border-secondary focus:ring-1 focus:ring-secondary text-center text-xl tracking-widest outline-none transition-all"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPin(!showPin)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors cursor-pointer flex items-center justify-center"
+                  >
+                    <span className="material-symbols-outlined text-[20px]">
+                      {showPin ? 'visibility_off' : 'visibility'}
+                    </span>
+                  </button>
+                </div>
               </div>
             </>
           )}
@@ -141,12 +165,6 @@ export const Login: React.FC = () => {
             Créer un compte
           </Link>
         </div>
-      </div>
-
-      <div className="mt-8 text-center text-[11px] text-on-surface-variant">
-        <p className="font-semibold text-primary">Identifiants de démonstration :</p>
-        <p>Email: <span className="font-mono">marc@finora.com</span> • Mot de passe: <span className="font-mono">password</span></p>
-        <p>PIN: <span className="font-mono">1234</span></p>
       </div>
     </div>
   );
