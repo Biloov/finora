@@ -79,6 +79,15 @@ async function initSystemCategories() {
   }
 }
 
+// Serve static frontend files in production
+if (process.env.NODE_ENV === 'production') {
+  const clientBuildDir = path.join(__dirname, '../');
+  app.use(express.static(clientBuildDir));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(clientBuildDir, 'index.html'));
+  });
+}
+
 // Start Server
 app.listen(PORT, async () => {
   console.log(`Server running on port ${PORT}`);
