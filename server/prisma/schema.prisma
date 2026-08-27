@@ -1,0 +1,214 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id                    String                 @id @default(uuid())
+  email                 String                 @unique
+  passwordHash          String
+  name                  String
+  avatarUrl             String?
+  pinCode               String? // For future local login convenience
+  createdAt             DateTime               @default(now())
+  updatedAt             DateTime               @updatedAt
+  accounts              Account[]
+  transactions          Transaction[]
+  categories            Category[]
+  people                Person[]
+  debts                 Debt[]
+  receivables           Receivable[]
+  budgets               Budget[]
+  financialGoals        FinancialGoal[]
+  recurringTransactions RecurringTransaction[]
+  notifications         Notification[]
+  auditLogs             AuditLog[]
+}
+
+model Account {
+  id             String        @id @default(uuid())
+  userId         String
+  user           User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name           String
+  type           String // Caisse, Banque, Mobile Money, Portefeuille, Epargne, Compte professionnel, Autre
+  initialBalance Float         @default(0)
+  currency       String        @default("FCFA")
+  description    String?
+  status         String        @default("ACTIVE") // ACTIVE, ARCHIVED
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  
+  // Relations to transactions
+  transactions          Transaction[] @relation("SourceAccount")
+  incomingTransfers     Transaction[] @relation("TargetAccount")
+  recurringTransactions RecurringTransaction[]
+}
+
+model Category {
+  id        String   @id @default(uuid())
+  userId    String? // Null for system global categories
+  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name      String
+  icon      String // Material Symbols identifier
+  color     String // Color hex code or label
+  type      String // INCOME, EXPENSE, or BOTH
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  transactions Transaction[]
+  budgets      Budget[]
+  recurringTransactions RecurringTransaction[]
+}
+
+model Person {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  firstName String
+  lastName  String?
+  phone     String?
+  email     String?
+  photoUrl  String?
+  notes     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  debts        Debt[]
+  receivables  Receivable[]
+  transactions Transaction[]
+}
+
+model Debt {
+  id              String        @id @default(uuid())
+  userId          String
+  user            User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  personId        String
+  person          Person        @relation(fields: [personId], references: [id], onDelete: Cascade)
+  amount          Float
+  paidAmount      Float         @default(0)
+  remainingAmount Float
+  date            DateTime
+  dueDate         DateTime?
+  description     String?
+  status          String        @default("PENDING") // PENDING, PARTIALLY_PAID, PAID, OVERDUE
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  
+  payments        Transaction[] @relation("DebtPayments")
+}
+
+model Receivable {
+  id              String        @id @default(uuid())
+  userId          String
+  user            User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  personId        String
+  person          Person        @relation(fields: [personId], references: [id], onDelete: Cascade)
+  amount          Float
+  paidAmount      Float         @default(0)
+  remainingAmount Float
+  date            DateTime
+  dueDate         DateTime?
+  description     String?
+  status          String        @default("PENDING") // PENDING, PARTIALLY_PAID, PAID, OVERDUE
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  payments        Transaction[] @relation("ReceivablePayments")
+}
+
+model Transaction {
+  id              String      @id @default(uuid())
+  userId          String
+  user            User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accountId       String
+  account         Account     @relation("SourceAccount", fields: [accountId], references: [id], onDelete: Cascade)
+  targetAccountId String? // For TRANSFER type operations
+  targetAccount   Account?    @relation("TargetAccount", fields: [targetAccountId], references: [id], onDelete: SetNull)
+  type            String // INCOME, EXPENSE, TRANSFER
+  categoryId      String?
+  category        Category?   @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  personId        String?
+  person          Person?     @relation(fields: [personId], references: [id], onDelete: SetNull)
+  debtId          String?
+  debt            Debt?       @relation("DebtPayments", fields: [debtId], references: [id], onDelete: SetNull)
+  receivableId    String?
+  receivable      Receivable? @relation("ReceivablePayments", fields: [receivableId], references: [id], onDelete: SetNull)
+  amount          Float
+  date            DateTime
+  description     String?
+  attachmentUrl   String?
+  isRecurring     Boolean     @default(false)
+  recurringId     String?
+  recurring       RecurringTransaction? @relation(fields: [recurringId], references: [id], onDelete: SetNull)
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+}
+
+model Budget {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  categoryId  String
+  category    Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  amount      Float
+  spentAmount Float    @default(0)
+  period      String   @default("MONTHLY") // WEEKLY, MONTHLY, YEARLY
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model FinancialGoal {
+  id           String    @id @default(uuid())
+  userId       String
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name         String
+  targetAmount Float
+  savedAmount  Float     @default(0)
+  targetDate   DateTime?
+  icon         String    @default("savings")
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+model RecurringTransaction {
+  id          String    @id @default(uuid())
+  userId      String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accountId   String
+  account     Account   @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  type        String // INCOME, EXPENSE
+  amount      Float
+  frequency   String // DAILY, WEEKLY, MONTHLY, YEARLY
+  startDate   DateTime
+  endDate     DateTime?
+  categoryId  String?
+  category    Category? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  description String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  spawnedTransactions Transaction[]
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  message   String
+  type      String   @default("INFO") // INFO, WARNING, SUCCESS
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  action    String
+  details   String
+  timestamp DateTime @default(now())
+}

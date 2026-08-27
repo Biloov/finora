@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FINORA - Accueil</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "surface": "#fbf9fb",
+                "on-secondary": "#ffffff",
+                "secondary-container": "#fed01b",
+                "surface-container": "#efedef",
+                "inverse-on-surface": "#f2f0f2",
+                "primary-fixed": "#d6e3ff",
+                "inverse-surface": "#303032",
+                "on-primary-fixed-variant": "#39475f",
+                "secondary-fixed": "#ffe083",
+                "on-surface-variant": "#44474d",
+                "primary-container": "#0d1c32",
+                "on-background": "#1b1b1d",
+                "surface-container-lowest": "#ffffff",
+                "surface-tint": "#515f78",
+                "secondary-fixed-dim": "#eec200",
+                "danger-red": "#ef4444",
+                "success-green": "#22c55e",
+                "secondary": "#735c00",
+                "surface-card": "#ffffff",
+                "on-error": "#ffffff",
+                "on-tertiary-fixed": "#2b1701",
+                "on-error-container": "#93000a",
+                "primary-fixed-dim": "#b9c7e4",
+                "surface-bright": "#fbf9fb",
+                "surface-variant": "#e4e2e4",
+                "surface-container-high": "#eae7ea",
+                "outline": "#75777e",
+                "error": "#ba1a1a",
+                "primary": "#000000",
+                "outline-variant": "#c5c6cd",
+                "on-tertiary-container": "#9f7d5b",
+                "surface-dim": "#dbd9db",
+                "on-tertiary": "#ffffff",
+                "surface-container-low": "#f5f3f5",
+                "tertiary-fixed": "#ffdcbd",
+                "tertiary": "#000000",
+                "error-container": "#ffdad6",
+                "on-primary-container": "#76849f",
+                "inverse-primary": "#b9c7e4",
+                "on-primary-fixed": "#0d1c32",
+                "surface-bg": "#f7f9fb",
+                "background": "#fbf9fb",
+                "on-secondary-fixed": "#231b00",
+                "tertiary-container": "#2b1701",
+                "on-secondary-fixed-variant": "#574500",
+                "on-surface": "#1b1b1d",
+                "surface-container-highest": "#e4e2e4",
+                "on-tertiary-fixed-variant": "#5d4124",
+                "on-primary": "#ffffff",
+                "tertiary-fixed-dim": "#e7bf99",
+                "on-secondary-container": "#6f5900"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "stack-sm": "8px",
+                "stack-lg": "32px",
+                "container-padding": "24px",
+                "stack-xl": "48px",
+                "stack-md": "16px",
+                "unit": "4px",
+                "gutter-grid": "16px"
+        },
+        "fontFamily": {
+                "body-lg": [
+                        "Inter"
+                ],
+                "headline-md": [
+                        "Hanken Grotesk"
+                ],
+                "numeric-data": [
+                        "Inter"
+                ],
+                "display-lg-mobile": [
+                        "Hanken Grotesk"
+                ],
+                "body-sm": [
+                        "Inter"
+                ],
+                "display-lg": [
+                        "Hanken Grotesk"
+                ],
+                "label-caps": [
+                        "Inter"
+                ]
+        },
+        "fontSize": {
+                "body-lg": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-md": [
+                        "20px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "numeric-data": [
+                        "18px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "display-lg-mobile": [
+                        "28px",
+                        {
+                                "lineHeight": "34px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "body-sm": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "display-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "label-caps": [
+                        "12px",
+                        {
+                                "lineHeight": "16px",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "600"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .glass-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.5);
+            box-shadow: 0px 8px 30px rgba(10, 25, 47, 0.05);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-sm min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-container-padding h-16 bg-surface/80 dark:bg-surface-container/80 backdrop-blur-xl">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden border-2 border-surface-container">
+<img class="w-full h-full object-cover" data-alt="A clean, professional portrait of a young man, Marc, in a high-key light mode setting. He has a warm, confident expression. The style is premium minimalism, suitable for a financial app profile picture. Deep navy and crisp white tones dominate the lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0PWucA1lL9eNHWbJvgdjubL8wFtDhAut3tqfcNQlok84cLiCHv9g8tr1ZiRDCdvclrRJdnmBbbnO4SX2krsTMQ-_eeulTSmp3n8D439TT6490EMCJSDx4zhlWuxaEtuY4wM5j7rcfxT4Jp6i4aP7Y7pYIv7WTcLG-CIe5YbnXpBYl60DznSfXSjj5SrZ2ibfkyypfqMVQ1FjoXDxjPJVpXG2uAbeCftGyUnfdZSli-ZTkqcL3kB8Q"/>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">12 Octobre 2023</p>
+<h1 class="font-headline-md text-headline-md-mobile md:text-headline-md text-primary dark:text-primary-fixed">Bonjour, Marc</h1>
+</div>
+</div>
+<button class="relative w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant text-[24px]">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+</header>
+<main class="pt-24 px-container-padding max-w-3xl mx-auto space-y-stack-lg">
+<!-- Main Balance Card -->
+<section>
+<div class="bg-primary-container rounded-[24px] p-6 text-on-primary-container relative overflow-hidden shadow-[0px_16px_40px_rgba(13,28,50,0.15)]">
+<!-- Decorative blurred shapes -->
+<div class="absolute -top-20 -right-20 w-64 h-64 bg-secondary-container/20 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-20 -left-20 w-64 h-64 bg-tertiary-container/10 rounded-full blur-3xl"></div>
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-1">
+<h2 class="font-label-caps text-label-caps text-on-primary-container/80 uppercase tracking-wider">Patrimoine Net</h2>
+<div class="bg-[#10B981]/20 text-[#10B981] px-2 py-1 rounded-full flex items-center gap-1 font-label-caps text-[10px]">
+<span class="material-symbols-outlined text-[12px]">trending_up</span>
+                            +8.4%
+                        </div>
+</div>
+<div class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-primary mb-8">
+                        2 625 000 <span class="text-xl font-normal opacity-70">FCFA</span>
+</div>
+<div class="grid grid-cols-3 gap-2 pt-4 border-t border-on-primary-container/20">
+<div>
+<p class="text-[11px] text-on-primary-container/70 mb-1">Disponible</p>
+<p class="font-numeric-data text-sm text-on-primary">2 175 k</p>
+</div>
+<div>
+<p class="text-[11px] text-on-primary-container/70 mb-1">Créances</p>
+<p class="font-numeric-data text-sm text-[#10B981]">+850 k</p>
+</div>
+<div>
+<p class="text-[11px] text-on-primary-container/70 mb-1">Dettes</p>
+<p class="font-numeric-data text-sm text-error">-400 k</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Mes comptes -->
+<section>
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-headline-md text-lg font-semibold text-primary">Mes comptes</h3>
+<button class="font-label-caps text-label-caps text-secondary-container hover:opacity-80">VOIR TOUT</button>
+</div>
+<div class="flex gap-4 overflow-x-auto hide-scrollbar pb-4 -mx-container-padding px-container-padding">
+<!-- Caisse -->
+<div class="glass-card min-w-[140px] p-4 rounded-xl flex-shrink-0 cursor-pointer active:scale-95 transition-transform">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-on-surface-variant">payments</span>
+</div>
+<p class="font-label-caps text-[11px] text-on-surface-variant mb-1">Caisse</p>
+<p class="font-numeric-data text-base text-primary">200k <span class="text-[10px] opacity-60">FCFA</span></p>
+</div>
+<!-- Banque -->
+<div class="glass-card min-w-[140px] p-4 rounded-xl flex-shrink-0 cursor-pointer active:scale-95 transition-transform">
+<div class="w-10 h-10 rounded-full bg-secondary-container/10 flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-secondary-container">account_balance</span>
+</div>
+<p class="font-label-caps text-[11px] text-on-surface-variant mb-1">Banque •••• 4092</p>
+<p class="font-numeric-data text-base text-primary">1.5M <span class="text-[10px] opacity-60">FCFA</span></p>
+</div>
+<!-- Moov -->
+<div class="glass-card min-w-[140px] p-4 rounded-xl flex-shrink-0 cursor-pointer active:scale-95 transition-transform">
+<div class="w-10 h-10 rounded-full bg-[#00529B]/10 flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-[#00529B]">phone_iphone</span>
+</div>
+<p class="font-label-caps text-[11px] text-on-surface-variant mb-1">Moov •••• 1289</p>
+<p class="font-numeric-data text-base text-primary">350k <span class="text-[10px] opacity-60">FCFA</span></p>
+</div>
+<!-- Togocom -->
+<div class="glass-card min-w-[140px] p-4 rounded-xl flex-shrink-0 cursor-pointer active:scale-95 transition-transform">
+<div class="w-10 h-10 rounded-full bg-[#FFD700]/20 flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-[#B39700]">sim_card</span>
+</div>
+<p class="font-label-caps text-[11px] text-on-surface-variant mb-1">Togocom •••• 8841</p>
+<p class="font-numeric-data text-base text-primary">125k <span class="text-[10px] opacity-60">FCFA</span></p>
+</div>
+</div>
+</section>
+<!-- Objectifs financiers -->
+<section>
+<h3 class="font-headline-md text-lg font-semibold text-primary mb-4">Objectifs financiers</h3>
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-[0px_4px_20px_rgba(10,25,47,0.05)] border border-surface-variant">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 rounded-full bg-secondary-container/10 flex items-center justify-center text-secondary-container">
+<span class="material-symbols-outlined">directions_car</span>
+</div>
+<div class="flex-1">
+<h4 class="font-headline-md text-base text-primary">Achat voiture</h4>
+<p class="font-body-sm text-[12px] text-on-surface-variant">2.5M / 8M FCFA</p>
+</div>
+<span class="font-numeric-data text-secondary-container">31%</span>
+</div>
+<div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary-container rounded-full" style="width: 31%;"></div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-container-padding pb-4 h-20 bg-surface/80 dark:bg-surface-container/80 backdrop-blur-xl rounded-t-xl shadow-[0px_-4px_20px_rgba(10,25,47,0.05)]">
+<a class="flex flex-col items-center justify-center text-secondary-container dark:text-secondary-fixed font-bold hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors active:scale-95 duration-150 ease-in-out p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined filled mb-1">home</span>
+<span class="font-label-caps text-[10px]">Accueil</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors active:scale-95 duration-150 ease-in-out p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1">account_balance_wallet</span>
+<span class="font-label-caps text-[10px]">Transactions</span>
+</a>
+<!-- FAB Center -->
+<div class="relative -top-6">
+<button class="w-14 h-14 bg-secondary-container rounded-full flex items-center justify-center text-on-secondary-container shadow-lg active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[28px]">add</span>
+</button>
+</div>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors active:scale-95 duration-150 ease-in-out p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1">group</span>
+<span class="font-label-caps text-[10px]">Personnes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors active:scale-95 duration-150 ease-in-out p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1">more_horiz</span>
+<span class="font-label-caps text-[10px]">Plus</span>
+</a>
+</nav>
+</body></html>

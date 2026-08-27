@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Transactions - FINORA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "surface": "#fbf9fb",
+                "on-secondary": "#ffffff",
+                "secondary-container": "#fed01b",
+                "surface-container": "#efedef",
+                "inverse-on-surface": "#f2f0f2",
+                "primary-fixed": "#d6e3ff",
+                "inverse-surface": "#303032",
+                "on-primary-fixed-variant": "#39475f",
+                "secondary-fixed": "#ffe083",
+                "on-surface-variant": "#44474d",
+                "primary-container": "#0d1c32",
+                "on-background": "#1b1b1d",
+                "surface-container-lowest": "#ffffff",
+                "surface-tint": "#515f78",
+                "secondary-fixed-dim": "#eec200",
+                "danger-red": "#ef4444",
+                "success-green": "#22c55e",
+                "secondary": "#735c00",
+                "surface-card": "#ffffff",
+                "on-error": "#ffffff",
+                "on-tertiary-fixed": "#2b1701",
+                "on-error-container": "#93000a",
+                "primary-fixed-dim": "#b9c7e4",
+                "surface-bright": "#fbf9fb",
+                "surface-variant": "#e4e2e4",
+                "surface-container-high": "#eae7ea",
+                "outline": "#75777e",
+                "error": "#ba1a1a",
+                "primary": "#000000",
+                "outline-variant": "#c5c6cd",
+                "on-tertiary-container": "#9f7d5b",
+                "surface-dim": "#dbd9db",
+                "on-tertiary": "#ffffff",
+                "surface-container-low": "#f5f3f5",
+                "tertiary-fixed": "#ffdcbd",
+                "tertiary": "#000000",
+                "error-container": "#ffdad6",
+                "on-primary-container": "#76849f",
+                "inverse-primary": "#b9c7e4",
+                "on-primary-fixed": "#0d1c32",
+                "surface-bg": "#f7f9fb",
+                "background": "#fbf9fb",
+                "on-secondary-fixed": "#231b00",
+                "tertiary-container": "#2b1701",
+                "on-secondary-fixed-variant": "#574500",
+                "on-surface": "#1b1b1d",
+                "surface-container-highest": "#e4e2e4",
+                "on-tertiary-fixed-variant": "#5d4124",
+                "on-primary": "#ffffff",
+                "tertiary-fixed-dim": "#e7bf99",
+                "on-secondary-container": "#6f5900"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "2xl": "1rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "stack-sm": "8px",
+                "stack-lg": "32px",
+                "margin-page": "24px",
+                "stack-xl": "48px",
+                "stack-md": "16px",
+                "unit": "4px",
+                "gutter-grid": "16px"
+        },
+        "fontFamily": {
+                "body-lg": [
+                        "Inter"
+                ],
+                "headline-md": [
+                        "Hanken Grotesk"
+                ],
+                "numeric-data": [
+                        "Inter"
+                ],
+                "display-lg-mobile": [
+                        "Hanken Grotesk"
+                ],
+                "body-sm": [
+                        "Inter"
+                ],
+                "display-lg": [
+                        "Hanken Grotesk"
+                ],
+                "label-caps": [
+                        "Inter"
+                ]
+        },
+        "fontSize": {
+                "body-lg": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-md": [
+                        "20px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "numeric-data": [
+                        "18px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "display-lg-mobile": [
+                        "28px",
+                        {
+                                "lineHeight": "34px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "body-sm": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "display-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "label-caps": [
+                        "12px",
+                        {
+                                "lineHeight": "16px",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "600"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .material-symbols-outlined.fill { font-variation-settings: 'FILL' 1; }
+        /* Hide scrollbar for chips */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-page h-16 bg-surface/80 dark:bg-surface-container/80 backdrop-blur-xl">
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-high border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a business user in a modern office environment. The image features soft natural lighting, a confident expression, and high-resolution details. The background is slightly blurred, emphasizing the subject's face, conveying a sense of trust and authority suitable for a financial app profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAh8gc2ORWe287XV9UKlrWsBQhtIIRMAu_Us3nC3xaWQJ0GChz3wOk69D0LS8ZKqV5svxwW_gyg4weDv_geZtug0C42YEU44cqZVeuTIlhQRQI7GMwFQGKWpNRJAHwAcpXmJHDoK4-sIAiMkkEH2riFdwUnIlkUnSXd9AmICol3BsP9wvlhHFLdo9W1VYLQFRrKj_R3Q3jZKmgH9NXAYNifdeYgPOqIyF9eZkoSWAYdeolKGn7Uetr_"/>
+</div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary dark:text-primary-fixed tracking-tight">FINORA</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors text-on-surface-variant dark:text-outline">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 px-margin-page max-w-3xl mx-auto space-y-stack-lg">
+<!-- Header & Search -->
+<section class="space-y-stack-md">
+<h2 class="font-headline-md text-headline-md text-on-background">Transactions</h2>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full h-12 pl-12 pr-4 bg-surface-container rounded-xl border border-outline-variant focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all font-body-sm text-body-sm text-on-surface placeholder:text-outline" placeholder="Rechercher une transaction..." type="text"/>
+</div>
+<!-- Filter Chips -->
+<div class="flex gap-gutter-grid overflow-x-auto no-scrollbar py-2">
+<button class="flex-shrink-0 px-4 py-2 rounded-full border border-secondary-container bg-secondary-container text-primary-container font-label-caps text-label-caps transition-colors hover:bg-secondary-container/80">
+                    Tous
+                </button>
+<button class="flex-shrink-0 px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant bg-surface hover:bg-surface-container-low font-label-caps text-label-caps transition-colors flex items-center gap-2">
+                    Date <span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+<button class="flex-shrink-0 px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant bg-surface hover:bg-surface-container-low font-label-caps text-label-caps transition-colors flex items-center gap-2">
+                    Compte <span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+<button class="flex-shrink-0 px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant bg-surface hover:bg-surface-container-low font-label-caps text-label-caps transition-colors flex items-center gap-2">
+                    Catégorie <span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+<button class="flex-shrink-0 px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant bg-surface hover:bg-surface-container-low font-label-caps text-label-caps transition-colors flex items-center gap-2">
+                    Type <span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+</div>
+</section>
+<!-- Transactions List -->
+<section class="space-y-stack-lg">
+<!-- Group: Aujourd'hui -->
+<div class="space-y-stack-sm">
+<h3 class="font-label-caps text-label-caps text-outline uppercase tracking-wider pl-2">Aujourd'hui</h3>
+<div class="bg-surface-container-lowest rounded-2xl shadow-[0px_4px_20px_rgba(10,25,47,0.05)] border border-outline-variant/30 overflow-hidden">
+<!-- Transaction Item 1 -->
+<div class="p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors cursor-pointer group border-b border-outline-variant/30 last:border-0">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-primary-container flex items-center justify-center text-on-primary-container group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined fill">storefront</span>
+</div>
+<div>
+<p class="font-body-lg text-body-lg font-semibold text-on-surface">Achat marchandises</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Commerce • Caisse</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-numeric-data text-numeric-data text-danger-red">-150 000 FCFA</p>
+</div>
+</div>
+<!-- Transaction Item 2 -->
+<div class="p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors cursor-pointer group border-b border-outline-variant/30 last:border-0">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-secondary-container flex items-center justify-center text-primary-container group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined fill">payments</span>
+</div>
+<div>
+<p class="font-body-lg text-body-lg font-semibold text-on-surface">Vente</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Commerce • Banque</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-numeric-data text-numeric-data text-success-green">+350 000 FCFA</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Group: Hier -->
+<div class="space-y-stack-sm">
+<h3 class="font-label-caps text-label-caps text-outline uppercase tracking-wider pl-2">Hier</h3>
+<div class="bg-surface-container-lowest rounded-2xl shadow-[0px_4px_20px_rgba(10,25,47,0.05)] border border-outline-variant/30 overflow-hidden">
+<!-- Transaction Item 3 -->
+<div class="p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors cursor-pointer group border-b border-outline-variant/30 last:border-0">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-surface-variant flex items-center justify-center text-on-surface-variant group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined fill">commute</span>
+</div>
+<div>
+<p class="font-body-lg text-body-lg font-semibold text-on-surface">Frais de transport</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Logistique • Caisse</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-numeric-data text-numeric-data text-danger-red">-15 000 FCFA</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Group: 24 Août -->
+<div class="space-y-stack-sm">
+<h3 class="font-label-caps text-label-caps text-outline uppercase tracking-wider pl-2">24 Août</h3>
+<div class="bg-surface-container-lowest rounded-2xl shadow-[0px_4px_20px_rgba(10,25,47,0.05)] border border-outline-variant/30 overflow-hidden">
+<!-- Transaction Item 4 -->
+<div class="p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors cursor-pointer group border-b border-outline-variant/30 last:border-0">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-tertiary-container flex items-center justify-center text-on-tertiary-container group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined fill">electrical_services</span>
+</div>
+<div>
+<p class="font-body-lg text-body-lg font-semibold text-on-surface">Facture Électricité</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Services • Banque</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-numeric-data text-numeric-data text-danger-red">-45 000 FCFA</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Action Button (FAB) -->
+<button class="fixed bottom-28 right-margin-page w-14 h-14 bg-secondary-container hover:bg-secondary-container/80 rounded-full shadow-lg flex items-center justify-center text-primary-container z-40 transition-transform active:scale-95">
+<span class="material-symbols-outlined text-[28px]">add</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-margin-page pb-4 h-20 bg-surface/80 dark:bg-surface-container/80 backdrop-blur-xl shadow-[0px_-4px_20px_rgba(10,25,47,0.05)] rounded-t-xl">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline font-label-caps text-label-caps hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors active:scale-95 duration-150 ease-in-out p-2 rounded-lg">
+<span class="material-symbols-outlined mb-1">home</span>
+            Accueil
+        </button>
+<button class="flex flex-col items-center justify-center text-secondary-container font-bold font-label-caps text-label-caps hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors active:scale-95 duration-150 ease-in-out p-2 rounded-lg">
+<span class="material-symbols-outlined mb-1 fill">account_balance_wallet</span>
+            Transactions
+        </button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline font-label-caps text-label-caps hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors active:scale-95 duration-150 ease-in-out p-2 rounded-lg">
+<span class="material-symbols-outlined mb-1">account_balance</span>
+            Comptes
+        </button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline font-label-caps text-label-caps hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors active:scale-95 duration-150 ease-in-out p-2 rounded-lg">
+<span class="material-symbols-outlined mb-1">group</span>
+            Personnes
+        </button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline font-label-caps text-label-caps hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors active:scale-95 duration-150 ease-in-out p-2 rounded-lg">
+<span class="material-symbols-outlined mb-1">more_horiz</span>
+            Plus
+        </button>
+</nav>
+<script>
+        // Simple interaction for transaction items to sink slightly on press
+        document.querySelectorAll('.cursor-pointer').forEach(item => {
+            item.addEventListener('mousedown', () => {
+                item.style.transform = 'scale(0.98)';
+                item.style.boxShadow = 'none';
+            });
+            item.addEventListener('mouseup', () => {
+                item.style.transform = 'scale(1)';
+            });
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>
