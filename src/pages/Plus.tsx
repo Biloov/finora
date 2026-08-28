@@ -20,6 +20,13 @@ export const Plus: React.FC = () => {
       color: 'bg-secondary-container/15 text-secondary'
     },
     {
+      title: 'Dettes & Créances',
+      desc: 'Suivi des prêts (on me doit) et emprunts (je dois)',
+      icon: 'handshake',
+      path: '/debts',
+      color: 'bg-secondary-container text-on-secondary-container'
+    },
+    {
       title: 'Prévisions & Projections',
       desc: 'Simulation du patrimoine à 7/30/90 jours',
       icon: 'query_stats',
